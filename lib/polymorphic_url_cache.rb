@@ -28,4 +28,8 @@ module PolymorphicUrlCache
   end
 end
 
-ActionView::RoutingUrlFor.include PolymorphicUrlCache
+if Rails::VERSION::MAJOR < 4
+  ActionView::Helpers::UrlHelper.include PolymorphicUrlCache
+else
+  ActionView::RoutingUrlFor.include PolymorphicUrlCache
+end
